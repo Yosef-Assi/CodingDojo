@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+</head>
+<body>
+    <h2>{{showbook.first_name}} {{showbook.last_name}}</h2>
+    <p>&nbsp; &nbsp;ID :{{showbook.id}}</p>
+    <p>&nbsp; &nbsp;Notes :{{showbook.notes}}</p>
+    <h2>Books</h2>
+    <ul>
+        {% for i in Authors %}
+                <li>{{i.title}}</li>
+        {% endfor %}
+            </ul>
+            <form action="/createauth" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="ids" value="{{showbook.id}}">
+            <select name="select1" id="select1">
+                {% for i in all_the_books%}
+                {%if i not in showbook.books.all%}
+                <option value="{{i.id}}">{{i.title}}</option>
+                {%endif%}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Add">
+        </form>
+</body>
+</html>

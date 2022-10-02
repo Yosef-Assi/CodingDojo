@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 4%;
+}
+.display {
+    margin-left: 20%;
+}
+.form1 input {
+    border: 3px solid black;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+#desc {
+    height:60px ;
+}
+#add {
+    box-shadow: 2px 2px  black;
+}
+.display td {
+    border: 2px solid black ;
+}
+.display th {
+    border: 2px solid black ;
+}

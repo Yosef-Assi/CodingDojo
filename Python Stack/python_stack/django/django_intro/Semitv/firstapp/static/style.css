@@ -1,0 +1,37 @@
+.conainer {
+    margin: 0 35%;
+}
+.edit1 {
+    float: right;
+}
+.title {
+    width: 70%;
+}
+.some {
+    display: block;
+}
+.desc{
+    width: 70%;
+    height: 100px;
+}
+.create {
+    margin-top: 5px;
+    margin-left: 30%;
+}
+.def {
+    width: 70%;
+}
+.col {
+    width: 10% !important;
+}
+#def {
+    margin-left: -30%;
+    width: 60%;
+}
+.print {
+    margin-left: -40px;
+}
+.aa {
+
+    margin-left: 110px;
+}

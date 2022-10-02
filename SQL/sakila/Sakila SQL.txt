@@ -1,0 +1,29 @@
+select * from city join address on city.city_id=address.city_id join customer on address.address_id=customer.address_id where address.city_id=312;
+
+
+select film.title, film.description,film.release_year,film.rating,film.special_features from film join film_category on film.film_id=film_category.film_id join category on film_category.category_id=category.category_id where category.category_id=5;
+select * from category;
+
+
+select actor.actor_id,actor.first_name,film.title,film.description,film.release_year from film join film_actor on film.film_id = film_actor.film_id join actor on actor.actor_id=film_actor.actor_id where actor.actor_id=5;
+
+
+select customer.first_name,customer.last_name,customer.email from city join address on city.city_id = address.city_id  join customer on address.address_id=customer.address_id where customer.store_id=1 and city.city_id IN (1,42,312,459)  ; 
+select * from film ;
+
+
+select film.title,film.description,film.release_year,film.special_features,film.rating from film join film_actor on film.film_id = film_actor.film_id join actor on actor.actor_id=film_actor.actor_id where film.rating="G" AND film.special_features="behind the scenes"  and actor.actor_id=15;
+
+
+
+select film.film_id,film.title,actor.actor_id,actor.first_name from film join film_actor on film.film_id = film_actor.film_id join actor on actor.actor_id=film_actor.actor_id where film.film_id=369;
+
+
+
+select film.title,film.description,film.release_year,film.rating from film join film_category on film.film_id=film_category.film_id join category on film_category.category_id=category.category_id where category.category_id=7 AND film.rental_rate=2.99;
+
+
+
+
+
+select film.title,film.description,film.release_year,film.rating,film.special_features,actor.first_name,actor.last_name from film join film_actor on film.film_id = film_actor.film_id join actor on actor.actor_id=film_actor.actor_id join film_category on film.film_id=film_category.film_id join category on film_category.category_id=category.category_id where actor.first_name="SANDRA" and actor.last_name="KILMER" and category.category_id=1;

@@ -1,0 +1,16 @@
+p {
+    color:blue;
+    text-align: center;
+}
+.p{
+    margin: 5% 35%;
+    border: 2px solid black;
+
+}
+.h2 {
+    margin: 5% 30%;
+    border: 2px solid black;
+}
+h2 {
+    text-align: center;
+}

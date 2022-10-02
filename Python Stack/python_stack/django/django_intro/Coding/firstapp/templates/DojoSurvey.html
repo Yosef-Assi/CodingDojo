@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+<div class="conatiner">
+    <h2>All The Users</h2>
+    <table border=1 class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+    {% for i in all_the_users %}
+        <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.first_name }} {{i.last_name}}</td>
+        <td>{{ i.email }}</td>
+        <td>{{ i.age }}</td>
+        </tr>
+    {% endfor %}
+
+        </table>
+    <h2>Add Users :</h2>
+    <form action='/result' method='post'>
+        {% csrf_token %}
+        <div class="form-group">
+            <div>
+            <p>Firstname:</p><input type='text' name='name1' class="form-control">
+            <p>Lastname</p><input type='text' name='name2' class="form-control">
+            </div>
+            <div>
+            <p>Email</p><input type='text' name='name3' class="form-control">
+            <p>Age</p><input type='number' name='name4'class="form-control">
+            <br>
+            <input type='submit' name='name5' id="input23" value="Add" class="btn btn-primary" class="form-control">
+            </div>
+        </div>
+        <br>
+    </form>
+    
+</div>
+</body>
+</html>

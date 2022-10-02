@@ -1,0 +1,377 @@
+<html>
+<head>
+	<title>NinjaManGame</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.row {
+			line-height: 0;
+		}
+		.wall {
+			background-color: blue;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+		}
+		.sushi {
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			background-image: url('sushi.png');
+			background-size: contain;
+		}
+		.blank{
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+		}
+		#ninjaman {
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			background-image: url('ninja.gif');
+			background-size: contain;
+			position: absolute;
+			
+		}
+		.onigiri {
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			background-image: url('onigiri.png');
+			background-size: contain;
+		}
+		#bluey{
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			background-image: url('bluey.gif');
+			background-size: contain;
+			position: absolute;
+		}
+		.ghost{
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			
+			background-size: contain;
+			position: absolute;
+}
+
+#ghost1{
+    left: 40px;
+    top: 40px;
+    background-image: url('bluey.gif');
+}
+#ghost2{
+    left: 100px;
+    top:  300px;
+	background-image: url('pinky.gif');
+}
+#ghost3{
+    left: 40px;
+    top: 400px;
+	background-image: url('pumpky.gif');
+}
+#ghost4{
+    left: 40px;
+    top: 200px;
+	background-image: url('red.gif');
+}
+		
+	</style>
+</head>
+<body>
+	
+<div id='world'></div>
+<div id="arrs"></div>
+	
+<div id='ninjaman'></div>
+
+<div id="ghost1" class="ghost"></div>
+<div id="ghost2" class="ghost"></div>
+<div id="ghost3" class="ghost"></div>
+<div id="ghost4" class="ghost"></div>
+
+		
+<h2 id="score2">Your Score is</h2>
+<p2><b>Hint:</b>if you eat sushi you will get 10 pts or eat onigiri you will get 5 pts</p2>  
+
+<h2 id="numforlive">YOUR NUM HEART IS</h2>
+<button id="btn" style="width: 100px ; height: 100px; font-size: large; ">Click me to Change World!</button>
+
+
+</body>
+<script type="text/javascript">
+	var numforlive = 3;
+	var xPos = 1;
+    var yPos = 1;
+	var world = [
+        [1,1,1,1,1],
+        [1,0,2,2,1],
+        [1,2,2,3,1],
+        [1,2,1,2,1],
+		[1,2,2,3,1],
+        [1,3,2,2,1],
+        [1,2,1,2,1],
+		[1,2,3,3,1],
+        [1,2,2,2,1],
+		[1,3,2,2,1],
+        [1,2,1,3,1],
+        [1,2,3,2,1],
+        [1,1,1,1,1],
+
+	];
+	var worldDict= {
+		0: 'blank',
+		1: 'wall',
+		2: 'sushi',
+		3: 'onigiri'
+	}
+	
+
+	function drawWorld(){
+		output = "";
+
+		for (var row=0; row < world.length; row++){
+			output+="<div class = 'row'>"
+			for (var x=0; x< world[row].length; x++){
+				output += "<div class ='" + worldDict[world[row][x]] +"'></div>"
+			}
+			output+= "</div>"
+		}
+		document.getElementById('world').innerHTML = output;
+	}
+	drawWorld();
+
+	var ninjaman = {
+		x:1,
+		y:1
+	}
+	var score=0;
+	function drawNinjaman(){
+		
+document.getElementById('ninjaman').style.top =ninjaman.y * 40 +'px';
+document.getElementById('ninjaman').style.left =ninjaman.x * 40 +'px';
+document.getElementById("score2").innerHTML = "Your Score is "+score;
+document.getElementById("numforlive").innerHTML = "Your have "+numforlive+"heart";
+	}
+	drawNinjaman();
+	
+
+	var ghosts = {
+    ghost1 : {
+        xPos: 1,
+        yPos: 2
+        },
+    ghost2 : {
+        xPos: 1,
+        yPos: 5
+        },
+    ghost3 : {
+        xPos: 1,
+        yPos: 7
+        },
+    ghost4 : {
+        xPos: 1,
+        yPos: 8
+        },
+}
+var moves = 0;
+function moveGhosts(){
+    if(moves>5){
+        for(var i in ghosts){
+            var direction = Math.floor(Math.random()*4)+1;
+
+            
+            if(direction === 1 && world[ghosts[i].yPos][(ghosts[i].xPos)-1] !==1){
+                ghosts[i].xPos -= 1;
+            } 
+
+            
+            else if(direction === 2 && world[(ghosts[i].yPos)-1][ghosts[i].xPos] !==1){
+                ghosts[i].yPos -= 1;
+            }  
+
+            
+            else if(direction === 3 && world[ghosts[i].yPos][(ghosts[i].xPos)+1] !==1){
+                ghosts[i].xPos += 1;
+            } 
+
+            else if(direction === 4 && world[(ghosts[i].yPos)+1][ghosts[i].xPos] !==1){
+                ghosts[i].yPos += 1;
+            }
+
+            document.getElementById(i).style.top = ghosts[i].yPos * 40+'px';
+            document.getElementById(i).style.left = ghosts[i].xPos * 40+'px';
+        }
+    }
+}
+moveGhosts()
+	
+
+	document.onkeydown = function(e){
+		if(e.keyCode == 37){
+			if (world[ninjaman.y][ninjaman.x - 1]==2){
+				score+=10;
+
+			}
+			else if (world[ninjaman.y][ninjaman.x - 1]==3){
+				score+=5;
+			}
+			if (world[ninjaman.y][ninjaman.x - 1]!=1){
+				ninjaman.x--;
+				moves++;
+		for(var i in ghosts){
+        if(ghosts[i].xPos === ninjaman.x && ghosts[i].yPos ===ninjaman.y){
+            gameOver = true;
+            alert('Game Over');
+        }
+    }
+			}
+			
+			
+			
+		}
+		if(e.keyCode == 39){
+			if (world[ninjaman.y][ninjaman.x + 1]==2){
+				score+=10;
+
+			}
+			else if (world[ninjaman.y][ninjaman.x + 1]==3){
+				score+=5;
+			}
+			if (world[ninjaman.y][ninjaman.x + 1]!=1){
+				ninjaman.x++;
+				moves++;
+				for(var i in ghosts){
+        if(ghosts[i].xPos === ninjaman.x && ghosts[i].yPos ===ninjaman.y){
+            gameOver = true;
+			if(numforlive==0)
+			{
+				gameOver = true;
+				alert('Game Over');
+				numforlive=3;
+			} else
+			numforlive--;
+            
+        }
+    }
+			}
+			
+		}
+		if(e.keyCode == 40){
+			if (world[ninjaman.y+1][ninjaman.x]==2){
+				score+=10;
+
+			}
+			else if (world[ninjaman.y+1][ninjaman.x]==3){
+				score+=5;
+			}
+			if (world[ninjaman.y + 1][ninjaman.x]!=1){
+				ninjaman.y++;
+				moves++;
+				for(var i in ghosts){
+        if(ghosts[i].xPos === ninjaman.x && ghosts[i].yPos ===ninjaman.y){
+            
+            if(numforlive==0)
+			{
+				gameOver = true;
+				alert('Game Over');
+				numforlive=3;
+			} else
+			numforlive--;
+        }
+    }
+			}
+		}
+		if(e.keyCode == 38){
+			if (world[ninjaman.y-1][ninjaman.x]==2){
+				score+=10;
+
+			}
+			else if (world[ninjaman.y-1][ninjaman.x]==3){
+				score+=5;
+			}
+			if (world[ninjaman.y - 1][ninjaman.x]!=1){
+				ninjaman.y--;
+				moves++;
+				for(var gh in ghosts){
+        if(ghosts[gh].xPos === ninjaman.x && ghosts[gh].yPos ===ninjaman.y){
+			if(numforlive==0)
+			{
+				gameOver = true;
+				alert('Game Over');
+				numforlive=3;
+			} else
+			numforlive--;
+        }
+    }
+			}
+		}
+		world[ninjaman.y][ninjaman.x]=0;
+		drawWorld();
+		drawNinjaman()
+		moveGhosts()
+		
+
+		function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+
+
+var ground = generateGround(10, 10);
+function generateGround(height, width)
+{
+  var ground = [];
+  for (var y = 0 ; y < height; y++)
+  {
+    ground[y] = [];
+    for (var x = 0; x < width; x++)
+    {
+        ground[y][x] = my();
+    }
+  }
+  return ground;
+  function my()
+  {
+    return (getRandomInt(4));
+  }
+}
+
+
+
+function drawWorld2(){
+	    arrs=generateGround(13,5)
+		output = "";
+
+		for (var row=0; row < arrs.length; row++){
+			output+="<div class = 'row'>"
+			for (var x=0; x< arrs[row].length; x++){
+				output += "<div class ='" + worldDict[arrs[row][x]] +"'></div>"
+			}
+			output+= "</div>"
+		}
+		document.getElementById('world').innerHTML = output;
+	}
+var btn = document.getElementById("btn");
+btn.addEventListener("click", function() {
+	drawWorld2();
+	drawNinjaman()
+}, false);
+
+
+	
+	}
+</script>
+
+</html>

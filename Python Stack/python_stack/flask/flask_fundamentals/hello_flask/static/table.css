@@ -1,0 +1,19 @@
+
+body{
+    margin-left: 15% !important;
+    margin-top: 15% !important;
+}
+table {
+
+    width: 80% ;
+}
+table,  td {
+    border:3px solid rgb(116, 202, 4) !important;
+    text-align: center;
+    color: blue;
+  }
+  th {
+    border:3px solid rgb(116, 202, 4) !important;
+    text-align: center;
+    color: rgb(255, 0, 0);
+  }

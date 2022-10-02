@@ -1,0 +1,103 @@
+<html>
+<head>
+	<title>NinjaManGame</title>
+	<style type="text/css">
+		
+		#space {
+			background-image: url("space.png");
+			width: 900px;
+			height: 800px;
+		}
+		.player {
+			position: absolute;
+			background-image: url("plane4.png");
+			width: 70px;
+			height: 75px;
+			
+		}
+		.enemy {
+			position: absolute;
+			background-image: url("eplane.png");
+			width: 70px;
+			height: 75px;
+			top:300px;
+			left: 300px;
+			transform:rotate(180deg);
+		}
+		
+	</style>
+	<div id="space">
+         <div id="players">
+		 </div>
+		 
+		 <div id="enemies">
+		
+		 </div>
+		 
+
+	</div>
+	<script type="text/javascript">
+         var plyer ={
+			left:450,
+			top: 620
+		 }
+		 var enemies =[
+			{left: 50,top:250},
+			{left: 250,top:250} ,
+			{left: 550,top:250},
+			{left: 750,top:250}
+		]
+function drawPlayer(){
+	
+	content ="<div class='player' style='left:"+plyer.left+"px; top:"+plyer.top+"px'></div>";
+	document.getElementById("players").innerHTML=content;
+}
+drawPlayer();
+
+function drawenemy(){
+	content ="";
+	for(var idk=0;idk<enemies.length;idk++){
+		content +="<div class='enemy' style='left:"+enemies[idk].left+"px; top:"+enemies[idk].top+"px'></div>";
+
+	}
+	document.getElementById("enemies").innerHTML=content;
+}
+drawenemy();
+
+var up1=650;
+var up2=590;
+document.onkeydown = function(e) {
+	if(e.keyCode==37){ //left
+        plyer.left=plyer.left-10;
+	}
+	if(e.keyCode==39){ //right
+        plyer.left=plyer.left+10;
+	}
+	if(e.keyCode==40){
+		
+		if(plyer.top==up1){
+			console.log("stop");
+			plyer.top=640;
+		}
+		plyer.top=plyer.top+10; //Down
+        
+	}
+	if(e.keyCode==38){ //up
+		if(plyer.top==up2){
+			console.log("stop");
+			plyer.top=600;
+		}
+        plyer.top=plyer.top-10;
+	}
+	drawPlayer();
+}
+
+	</script>
+</head>
+<body>
+	
+
+</body>
+
+
+</html>

@@ -1,0 +1,135 @@
+1-- Create 5 different authors: Jane Austen, Emily Dickinson, Fyodor Dostoevsky, William Shakespeare, Lau Tzu
+
+insert into authors (name,created_at,update_at)
+values("Jane Austen",CURDATE(),CURDATE());
+
+insert into authors (name,created_at,update_at)
+values("Emily Dickinson",CURDATE(),CURDATE());
+
+
+insert into authors (name,created_at,update_at)
+values("Fyodor Dostoevsky",CURDATE(),CURDATE());
+
+insert into authors (name,created_at,update_at)
+values("William Shakespeare",CURDATE(),CURDATE());
+
+
+insert into authors (name,created_at,update_at)
+values("Lau Tzu",CURDATE(),CURDATE());
+
+
+
+2--   Create 5 books with the following names: C Sharp, Java, Python, PHP, Ruby
+
+insert into books (title,num_of_pages,created_at,update_at)
+values("C#",200,CURDATE(),CURDATE());
+
+insert into books (title,num_of_pages,created_at,update_at)
+values("Java",700,CURDATE(),CURDATE());
+
+
+insert into books (title,num_of_pages,created_at,update_at)
+values("Python",250,CURDATE(),CURDATE());
+
+insert into books (title,num_of_pages,created_at,update_at)
+values("PHP",400,CURDATE(),CURDATE());
+
+
+insert into books (title,num_of_pages,created_at,update_at)
+values("Ruby",180,CURDATE(),CURDATE());
+
+3--  Change the name of the C Sharp book to C#
+
+
+SET SQL_SAFE_UPDATES = 0;
+update books set title="C Sharp" where title="C#";
+
+
+
+4--  Change the first name of the 4th author to Bill
+
+
+
+update authors set name="Bill Shakespeare" where id=4;
+
+
+5--  Have the first author favorite the first 2 books
+
+
+insert into favorites (book_id,author_id) values (1,1)
+
+insert into favorites (book_id,author_id) values (2,1)
+
+
+6-- Have the second author favorite the first 3 books
+
+insert into favorites (book_id,author_id) values (1,2);
+insert into favorites (book_id,author_id) values (2,2);
+
+insert into favorites (book_id,author_id) values (3,2);
+
+
+7--  Have the third author favorite the first 4 books
+
+
+insert into favorites (book_id,author_id) values (1,3);
+insert into favorites (book_id,author_id) values (2,3);
+
+insert into favorites (book_id,author_id) values (3,3);
+
+insert into favorites (book_id,author_id) values (4,3);
+
+
+8--   Have the fourth author favorite all the books
+
+
+insert into favorites (book_id,author_id) values (1,4);
+insert into favorites (book_id,author_id) values (2,4);
+
+insert into favorites (book_id,author_id) values (3,4);
+
+insert into favorites (book_id,author_id) values (4,4);
+
+insert into favorites (book_id,author_id) values (5,4);
+
+ 
+9--  Retrieve all the authors who favorited the 3rd book
+
+select name,book_id from authors  join favorites  on author_id=author_id 
+where book_id=3;
+
+10--  Remove the first author of the 3rd book's favorites
+
+the first author just favorites the first 2 books
+
+
+11--  Add the 5th author as an other who favorited the 2nd book
+
+
+insert into favorites (book_id,author_id) values (5,2);
+
+
+12--  Find all the books that the 3rd author favorited
+
+
+
+select id as book_id,title,author_id from books join favorites on id=book_id
+where author_id=3;
+
+
+
+
+13--  Find all the authors that favorited to the 5th book
+
+
+
+select name,book_id,author_id from authors join favorites on id=author_id
+where book_id=5;
+
+
+
+
+
+
+
+

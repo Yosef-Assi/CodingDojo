@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newshow</title>
+</head>
+<body>
+    <a href="/shows" class="edit1">Go Back</a>
+    <h1>Tv Shows {{shows.id}}</h1>
+    <p>Title :{{shows.title}}</p>
+
+    <p>Network : {{shows.network}}</p>
+    <p>Relase Date : {{shows.relasedate}}</p>
+    <p>Description : {{shows.description}}</p>
+    <br><br><br><br><br><br><br><br>
+    <p>Last Update {{shows.updated_at}}</p>
+    <div><a href="/show/{{shows.id}}/edit">Edit</a> | <a href="/shows/{{shows.id}}/destroy">Delete</a></div>
+</body>
+</html>     

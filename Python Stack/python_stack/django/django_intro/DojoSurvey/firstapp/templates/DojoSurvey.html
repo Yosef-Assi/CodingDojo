@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    
+<div class="conatiner">
+    <form action='/result' method='post'>
+        {% csrf_token %}
+        <div>
+            Your name:<input type='text' name='name' id="input2">
+        </div>
+        <br>
+        <div>
+            DojoLocation:<select name="select8" id="select">
+                <br>
+                            <option value="SanJose">San Jose</option>
+                            <option value="YosefAssi">YosefAssi</option>
+                        </select>
+        </div>
+                    <br>
+        <div>
+        Fav Lang:<select name="select2" id="select2">
+                        <option value="Python">Python</option>
+                        <option value="C++">C++</option>
+                    </select>
+                    <br>
+        Comment (optional):
+    </div>
+        <div>
+            <textarea name="textarea"></textarea>
+        </div>  
+        <div>
+            <p>Please select your favorite Web language:</p>
+            <input type="radio" id="html" name="fav_language" value="English">
+            <label for="English">English</label><br>
+            <input type="radio" id="css" name="fav_language" value="Arabic">
+            <label for="Arabic">Arabic</label><br>
+            <input type="radio" id="javascript" name="fav_language" value="Spanch">
+            <label for="Spanch">Spanch</label>
+        </div>  
+        <div>
+            <p>Please select your Favorite Car:</p>
+            <input type="checkbox" id="vehicle1" name="vehicle" value="BMW">
+            <label for="vehicle1">BMW</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle" value="AUDI">
+            <label for="vehicle2">AUDI</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle" value="SKODA">
+            <label for="vehicle3">SKODA</label><br>        </div>  
+        <div>
+            <input type='submit' value='Submit' id="submit">
+        </div>
+    </form>
+    <p>{{request.session.name}}</p>
+</div>
+</body>
+</html>

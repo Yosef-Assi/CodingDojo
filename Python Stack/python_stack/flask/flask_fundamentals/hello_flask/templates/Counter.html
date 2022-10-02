@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+    <h1>Times the user has actually visited the page </h2>
+        <p>{{session['count2']}}</p>
+    <h2>Counter (Real Counter)</h2>
+    <p id="p1"> {{session['count']}} times</p>
+    
+   
+    <div>
+        <!-- <button onclick="location.reload()">Increment+1</button> -->
+    </div>
+    <form action='/increment2' >
+        <input type="submit" value="increment2">
+    </form>
+    <form action='/reset'>
+        <input type="submit"  value="reset">
+        </form>
+   
+</body>
+</html>

@@ -1,0 +1,84 @@
+1:--  Create 3 new Dojos
+insert into dojos (name,created_at,update_at)
+values("sami",CURDATE(),CURDATE())
+
+
+insert into dojos (name,created_at,update_at)
+values("ahmad",CURDATE(),CURDATE())
+
+
+insert into dojos (name,created_at,update_at)
+values("saed",CURDATE(),CURDATE())
+
+
+
+2:--   Delete the 3 dojos you just created
+SET SQL_SAFE_UPDATES = 0;
+Delete from dojos;
+
+
+3:--  Create 3 more dojos
+insert into dojos (name,created_at,update_at)
+values("sami",CURDATE(),CURDATE())
+
+
+insert into dojos (name,created_at,update_at)
+values("ahmad",CURDATE(),CURDATE())
+
+
+insert into dojos (name,created_at,update_at)
+values("saed",CURDATE(),CURDATE())
+
+4:--  Create 3 ninjas that belong to the first dojo
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("isa","sami",20,CURDATE(),CURDATE(),4);
+
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("ibraheem","opswa",22,CURDATE(),CURDATE(),4);
+
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("saed","jamel",20,CURDATE(),CURDATE(),4);
+
+
+5--  Create 3 ninjas that belong to the second dojo
+
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("omar","sami",20,CURDATE(),CURDATE(),5);
+
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("tamer","othman",22,CURDATE(),CURDATE(),5);
+
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("yazeed","aljmla",20,CURDATE(),CURDATE(),5);
+
+6--   Create 3 ninjas that belong to the third dojo
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("ameer","azal",20,CURDATE(),CURDATE(),6);
+
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("asmeer","noor",22,CURDATE(),CURDATE(),6);
+
+
+insert into ninjas (first_name,last_name,age,created_at,updated_at,dojo_id)
+values("hadi","kjma",20,CURDATE(),CURDATE(),6);
+
+7--  Retrieve all the ninjas from the first dojo
+
+
+select * from ninjas where dojo_id=4;
+
+8--  Retrieve all the ninjas from the last dojo
+
+select * from ninjas where dojo_id=6;
+
+9--  Retrieve the last ninja's dojo
+
+select * from ninjas  join dojos on dojos.id= dojo_id ;

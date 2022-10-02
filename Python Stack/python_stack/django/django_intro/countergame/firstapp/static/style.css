@@ -1,0 +1,48 @@
+h1,p {
+    text-align: center;
+}
+.form1 input{
+    margin-left: 46%;
+    width: 8%;
+    border: 2px solid black;
+}
+.form1 button{
+    margin-top: 1%;
+    margin-left: 48%;
+    width: 5%;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+}
+.bx1{
+    margin-left: 40%;
+    border: 2px solid black;
+    height: 200px;
+    width: 20%;
+    background-color: red;
+    color: white;
+    box-shadow: 2px 2px black;
+}
+.bx1 h3 {
+    margin-top: 33%;
+    text-align: center;
+}
+.bx2{
+    margin-left: 40%;
+    border: 2px solid black;
+    height: 200px;
+    width: 20%;
+    background-color: green;
+    color: white;
+    box-shadow: 2px 2px black;
+}
+.bx2 h3 {
+    margin-top: 33%;
+    text-align: center;
+}
+.bx2 button{
+    margin-top: 1%;
+    margin-left: 30%;
+    width: 40%;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+}

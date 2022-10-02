@@ -1,0 +1,38 @@
+insert into users (created_at,updated_at,first_name,last_name) values(now(),now(),"Yosef","Assi"),(now(),now(),"Zaki","N"),(now(),now(),"Ahmad","S"),(now(),now(),"Khaled","T"),(now(),now(),"Amjad","M"),(now(),now(),"Sami","W");
+select * from users;
+
+insert into friendships (user_id,friend_id,craeted_at,updated_at) values (1,2,now(),now()),(1,4,now(),now()),(1,6,now(),now());
+
+insert into friendships (user_id,friend_id,craeted_at,updated_at) values (2,1,now(),now()),(2,3,now(),now()),(1,5,now(),now());
+
+insert into friendships (user_id,friend_id,craeted_at,updated_at) values (3,2,now(),now()),(3,5,now(),now());
+
+insert into friendships (user_id,friend_id,craeted_at,updated_at) values (4,3,now(),now());
+insert into friendships (user_id,friend_id,craeted_at,updated_at) values (5,1,now(),now()),(5,6,now(),now());
+insert into friendships (user_id,friend_id,craeted_at,updated_at) values (6,2,now(),now()),(6,3,now(),now());
+
+select * from friendships;
+
+
+select A.first_name ,A.last_name ,B.first_name AS friend_first_name,B.last_name AS friend_last_name
+from users AS A  join friendships  on A.id=friendships.user_id join users as B on B.id=friendships.friend_id  ;
+
+
+select  B.first_name AS friend_first_name,B.last_name AS friend_last_name ,A.first_name ,A.last_name
+from users AS A  join friendships  on A.id=friendships.user_id join users as B on B.id=friendships.friend_id where A.id=1   ;
+
+select count(id) as FriendshipsNumber from friendships;
+
+select first_name , last_name , count(A.id) AS NumerOfFriends from users AS A join friendships AS B on A.id=B.user_id
+group by A.id order by NumerOfFriends DESC  limit 1;
+
+
+
+select A.first_name ,B.first_name AS friend_first_name,B.last_name AS friend_last_name
+from users AS A  join friendships  on A.id=friendships.user_id join users as B on B.id=friendships.friend_id where A.id=3 order by friend_first_name  ;
+
+
+
+
+
+

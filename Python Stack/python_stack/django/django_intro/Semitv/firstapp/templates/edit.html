@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="conainer">
+        <a href="/shows" class="edit1">Go Back</a>
+        <h1 class="edit">Edit Show {{editshow.id}}</h1>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+            {%endif%}
+        <br>
+        <form action="/shows/{{editshow.id}}/update" method="post">
+            {%csrf_token%}
+            <p>Title</p><input type="text" name="title" value="{{editshow.title}}" class="title">
+            <br>
+            <div class="row">
+                <div class="col">
+                    <br>
+            <p>Network</p><input type="text" name="network" value="{{editshow.network}}" class="def">
+                </div>
+                <div class="col">   
+                    <br>
+            <p class="print">Relase Date</p><input type="date" name="relasedate" value={{editshow.relasedate |date:'Y-m-d' }} id="def">
+        </div>
+            </div>
+            <p>Description</p><input type="text" name="description" value="{{editshow.description}}" class="desc">
+               <br>
+            <input type="submit" value="Update" class="create">
+        </form>
+        <a href="/show/{{editshow.id}}" class="aa">Go to Show</a>
+        <br><br><br><br><br>
+        
+    </div>
+</body>
+</html>

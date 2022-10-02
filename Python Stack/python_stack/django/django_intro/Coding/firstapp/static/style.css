@@ -1,0 +1,35 @@
+.conatiner {
+    border: 2px solid black;
+    padding: 20px;
+    width: 60%;
+    margin:0 25%;
+}
+#select2{
+    width: 150px;
+    margin-left: 8%;
+    text-align: center;
+}
+#input2{
+    width: 150px;
+    margin-left: 6.5%;
+    text-align: center;
+}
+#select {
+    width: 150px;
+    margin-left: 3%;
+    text-align: center;
+}
+#submit {
+    width: 150px;
+    margin-left: 1%;
+    text-align: center;
+    background-color: aqua;
+    color: white;
+    box-shadow: 3px 3px black;
+}
+td {
+    padding-left: 60px;
+}
+.b2 {
+    display: flex;
+}

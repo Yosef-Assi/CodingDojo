@@ -1,0 +1,135 @@
+>>> from firstapp.models import *
+>>> Dojo.objects.create(name="Yosef",city="Ramallah",sate="State1")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\base.py", line 501, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: Dojo() got an unexpected keyword argument 'sate'
+>>> Dojo.objects.create(name="Yosef",city="Ramallah",state="State1")
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name="Zaki",city="Ramallah",state="State1")
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name="Zak2i",city="Ramallah",state="State1")
+<Dojo: Dojo object (3)>
+>>> c=Dojo.objects.get(id=1)
+>>> c.delete()
+(1, {'firstapp.Ninja': 0, 'firstapp.Dojo': 1})
+>>> c=Dojo.objects.get(id=2)
+>>> c.delete()
+(1, {'firstapp.Ninja': 0, 'firstapp.Dojo': 1})
+>>> c=Dojo.objects.get(id=3)
+>>> c.delete()
+(1, {'firstapp.Ninja': 0, 'firstapp.Dojo': 1})
+>>> dojo.objects.all.values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'dojo' is not defined
+>>> Dojo.objects.all.values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'function' object has no attribute 'values'
+>>> Dojo.objects.create(name="Yosef",city="Ramallah",state="State1")
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name="Zaki",city="Ramallah",state="State2")
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name="Hamza",city="Ramallah",state="State2")
+<Dojo: Dojo object (6)>
+>>> Dojo.objects.all
+<bound method BaseManager.all of <django.db.models.manager.Manager object at 0x0000015C29DFA0B8>>
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: Dojo object (4)>, <Dojo: Dojo object (5)>, <Dojo: Dojo object (6)>]>
+>>> Dojo.objects.all().values()
+<QuerySet [{'id': 4, 'name': 'Yosef', 'city': 'Ramallah', 'state': 'State1', 'created_at': datetime.datetime(2022, 9, 23, 15, 54, 15, 482749, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 15, 54, 15, 482749, tzinfo=<UTC>)}, {'id': 5, 'name': 'Zaki', 'city': 'Ramallah', 'state': 'State2', 'created_at': datetime.datetime(2022, 9, 23, 15, 54, 25, 944355, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 15, 54, 25, 944355, tzinfo=<UTC>)}, {'id': 6, 'name': 'Hamza', 'city': 'Ramallah', 'state': 'State2', 'created_at': datetime.datetime(2022, 9, 23, 15, 54, 33, 908341, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 15, 54, 33, 908341, tzinfo=<UTC>)}]>
+>>> Ninja.objects.create(first_name="Sameer",last_name="Saed",dojo=Dojo.objects.get(id=1))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+firstapp.models.Dojo.DoesNotExist: Dojo matching query does not exist.
+>>> Ninja.objects.create(first_name="Sameer",last_name="Saed",dojo=Dojo.objects.get(id=4))
+<Ninja: Ninja object (1)>
+>>> Ninja.objects.create(first_name="Soraka",last_name="Humon",dojo=Dojo.objects.get(id=4))
+<Ninja: Ninja object (2)>
+>>> Ninja.objects.create(first_name="Sona",last_name="Humon",dojo=Dojo.objects.get(id=4))
+<Ninja: Ninja object (3)>
+>>> Ninja.objects.create(first_name="Sett",last_name="Craz",dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object (4)>
+>>> Ninja.objects.create(first_name="Ezrael",last_name="Garen",dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object (5)>
+>>> Ninja.objects.create(first_name="Syndra",last_name="Belveth",dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object (6)>
+>>> Ninja.objects.create(first_name="Kaisa",last_name="Velkoz",dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object (7)>
+>>> Ninja.objects.create(first_name="Lux",last_name="Velkoz",dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object (8)>
+>>> Ninja.objects.create(first_name="Morgana",last_name="Kayle",dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object (9)>
+>>> Ninja.objects.filter(dojo=6)
+<QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+>>> Ninja.objects.filter(dojo=6).values()
+<QuerySet [{'id': 7, 'first_name': 'Kaisa', 'last_name': 'Velkoz', 'dojo_id': 6, 'created_at': datetime.datetime(2022, 9, 23, 16, 2, 0, 781717, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 16, 2, 0, 781717, tzinfo=<UTC>)}, {'id': 8, 'first_name': 'Lux', 'last_name': 'Velkoz', 'dojo_id': 6, 'created_at': datetime.datetime(2022, 9, 23, 16, 2, 9, 790456, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 16, 2, 9, 790456, tzinfo=<UTC>)}, {'id': 9, 'first_name': 'Morgana', 'last_name': 'Kayle', 'dojo_id': 6, 'created_at': datetime.datetime(2022, 9, 23, 16, 2, 27, 802722, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 16, 2, 27, 802722, tzinfo=<UTC>)}]>
+>>> Ninja.objects.all().order_by("-dojo").limit1.values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'limit1'
+>>> Ninja.objects.filter(dojo=4).values()
+<QuerySet [{'id': 1, 'first_name': 'Sameer', 'last_name': 'Saed', 'dojo_id': 4, 'created_at': datetime.datetime(2022, 9, 23, 15, 59, 52, 469185, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 15, 59, 52, 469185, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Soraka', 'last_name': 'Humon', 'dojo_id': 4, 'created_at': datetime.datetime(2022, 9, 23, 16, 0, 10, 334275, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 16, 0, 10, 334275, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Sona', 'last_name': 'Humon', 'dojo_id': 4, 'created_at': datetime.datetime(2022, 9, 23, 16, 0, 17, 174096, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 16, 0, 17, 174096, tzinfo=<UTC>)}]>
+>>> Ninja.objects.last()
+<Ninja: Ninja object (9)>
+>>> Ninja.objects.last().__dict__
+{'_state': <django.db.models.base.ModelState object at 0x0000015C29EA1E10>, 'id': 9, 'first_name': 'Morgana', 'last_name': 'Kayle', 'dojo_id': 6, 'created_at': datetime.datetime(2022, 9, 23, 16, 2, 27, 802722, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 16, 2, 27, 802722, tzinfo=<UTC>)}
+>>> python manage.py makemigrations
+  File "<console>", line 1
+    python manage.py makemigrations
+                ^
+SyntaxError: invalid syntax
+>>> exit()
+
+(djangoPy3Env) C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\django\django_intro\dojosAndninjas>python manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "No Value"
+Migrations for 'firstapp':
+  firstapp\migrations\0002_dojo_desc.py
+    - Add field desc to dojo
+
+(djangoPy3Env) C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\django\django_intro\dojosAndninjas>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, firstapp, sessions
+Running migrations:
+  Applying firstapp.0002_dojo_desc... OK
+
+(djangoPy3Env) C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\django\django_intro\dojosAndninjas>python manage.py shell
+Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:54:40) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from firstapp.models import *
+>>> c=Dojo.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\2019\Desktop\Coding Dojo\Python Stack\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+firstapp.models.Dojo.DoesNotExist: Dojo matching query does not exist.
+>>> Dojo.objects.all.values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'function' object has no attribute 'values'
+>>> Dojo.objects.all().values()
+<QuerySet [{'id': 4, 'name': 'Yosef', 'city': 'Ramallah', 'state': 'State1', 'desc': 'No Value', 'created_at': datetime.datetime(2022, 9, 23, 15, 54, 15, 482749, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 15, 54, 15, 482749, tzinfo=<UTC>)}, {'id': 5, 'name': 'Zaki', 'city': 'Ramallah', 'state': 'State2', 'desc': 'No Value', 'created_at': datetime.datetime(2022, 9, 23, 15, 54, 25, 944355, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 15, 54, 25, 944355, tzinfo=<UTC>)}, {'id': 6, 'name': 'Hamza', 'city': 'Ramallah', 'state': 'State2', 'desc': 'No Value', 'created_at': datetime.datetime(2022, 9, 23, 15, 54, 33, 908341, tzinfo=<UTC>), 'updated_at': datetime.datetime(2022, 9, 23, 15, 54, 33, 908341, tzinfo=<UTC>)}]>
+>>> Dojo.objects.create(name="Bzour",city="Jenin",state="State4",desc="CSE")
+<Dojo: Dojo object (7)>
+>>>

@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: space-evenly;
+   
+}
+.cont2{
+    margin: 0 35%;
+}
+
+.form2 {
+    margin-left: 10%;
+}
+input {
+    border: 2px solid black;
+    margin-left: 20px;
+    margin-top: 10px;
+}

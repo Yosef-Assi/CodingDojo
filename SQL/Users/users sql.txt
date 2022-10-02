@@ -1,0 +1,40 @@
+1:--  Create 3 new users
+insert into users (id,first_name,last_name,email)
+values(1,"ahmad","sami","ahmad@example.com");
+
+insert into users (id,first_name,last_name,email)
+values(2,"saed","sameer","sameer@example.com");
+
+insert into users (id,first_name,last_name,email)
+values(3,"waleed","sameer","waleed@example.com");
+
+
+2:--  Retrieve all the users
+select * from users;
+
+
+3:--  Retrieve the first user using their email address
+select * from users where email="ahmad@example.com"
+
+4:--  Retrieve the last user using their id
+
+select * from users where id=3;
+
+
+5--  Change the user with id=3 so their last name is Pancakes
+
+update users set last_name="Pancakes" where id=3;
+
+6--   Delete the user with id=2 from the database
+
+delete from users where id=2;
+
+7--  Get all the users, sorted by their first name
+
+select *from users
+order by first_name;
+
+8--  Get all the users, sorted by their first name in descending order
+
+select *from users
+order by first_name desc;

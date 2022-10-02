@@ -1,0 +1,37 @@
+.container {
+    background-color: rgba(192, 192, 192, 0.788);
+    text-align: center;
+}
+.f1 {
+    color: black;
+    text-align: center;
+    font-size: 50px;
+   
+}
+.flex1 {
+display: flex;
+background-color: cyan;
+margin:10px;
+justify-content:space-around;
+}
+.flex2 {
+    display: flex;
+    background-color: palevioletred;
+    margin:10px;
+    justify-content: center;
+    }
+.flex3   {
+    display: flex;
+    background-color: white;       
+    margin:10px;
+    justify-content: space-around;
+      }
+      
+div >    img {
+    width: 300px;
+    padding: 50px;
+    margin: 20px;
+  }
+img.octocat {
+    height: 200px;
+}

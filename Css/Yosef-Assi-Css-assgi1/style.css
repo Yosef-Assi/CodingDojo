@@ -1,0 +1,27 @@
+.quote p {
+    color: darkslategrey;
+    font-style: italic;
+}
+.hea1 {
+    background-color: black;
+    color: white;
+    text-align: left;
+    
+}
+.span1 {
+    color: rgba(0, 60, 255, 0.808);
+}
+.hea2 {
+    text-align: center;
+    
+    background-color: purple;
+    color: white;
+    font-style: italic;
+}
+
+.hea3 {
+    background-color: rgb(0, 255, 200);
+    color: black;
+    text-decoration: underline;
+    text-align: right;
+}

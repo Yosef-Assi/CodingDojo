@@ -1,0 +1,1 @@
+call C:\Users\2019\Desktop\python_stack\my_environments\py3Env\Scripts\activate
