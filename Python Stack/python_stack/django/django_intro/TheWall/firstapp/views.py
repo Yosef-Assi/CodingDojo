@@ -1,7 +1,10 @@
 
+from email import message
 from django.shortcuts import render,redirect
 import bcrypt
 from .models import *
+from django.contrib import messages
+
 def root(request):
     return render(request,'login.html')
 def main(request):
@@ -27,7 +30,18 @@ def wall(request):
 
 
 def reg(request):
+    errors = User.objects.basic_validator(request.POST)
+    users=User.objects.all()
+    for user in users:
+        if user.email==request.POST['email']:
+            errors['email']="this email aleady exsist"
 
+
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+            
+        return redirect('/')
     password= request.POST['password']
     pw_hash=bcrypt.hashpw(password.encode(),bcrypt.gensalt()).decode()
     print(pw_hash)  
@@ -55,9 +69,10 @@ def login(request):
         if bcrypt.checkpw(request.POST['password2'].encode(),logged_user.password.encode()):
             request.session['user_id'] = logged_user.id
             request.session['user_name']= logged_user.first_name
-            
             return redirect('/wall')
-
+        else:
+            messages.error(request,"Your email or password is wrong try ag!")
+            return redirect('/login')
     return redirect('/login')
 def addmessage(request):
     Message.objects.create(

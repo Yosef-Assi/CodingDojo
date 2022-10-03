@@ -1,0 +1,49 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+.nav2 {
+    display: flex;
+}
+.nav2 div {
+    margin-left: 20px;
+}
+hr {
+    height: 10px;
+    background-color: black;
+}
+.conainer {
+    margin: 0.5% 0px !important;
+}
+.message {
+    margin: 0px 10%;
+}
+#in1{
+    float:right;
+}
+.p2 {
+    margin-left: 20px;
+}
+.p3 {
+    color: red;
+    margin-left: 35px;
+}
+.p4 {
+    color: darkblue;
+    margin-left: 60px;
+    font-style: italic;
+}
+.p5 {
+    margin-left: 35px;
+    
+
+}
+.p21 {
+    color:green;
+    font-weight: bolder;
+}
+
+textarea {
+    border:2px solid black;
+    box-shadow: 2px 2px green;
+}

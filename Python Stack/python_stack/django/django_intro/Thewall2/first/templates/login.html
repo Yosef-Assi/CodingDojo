@@ -39,19 +39,19 @@
                     <td><p>Confirm Password</p></td>
                     <td><input type="password" name="cpassword"></td>
                 </tr>
+
                 <tr>
                     <td><p></p></td>
                     <td><input type="submit" name="sumbit" value="Register" class="btn btn-danger"></td>
                 </tr>
-                
+                {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}
             </table>
-            {% if messages %}
-            <ul class="messages">    
-                {% for message in messages %}    
-                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
-                {% endfor %}
-            </ul>
-            {% endif %}
         </form>
         </div>
         <div class = "vertical"></div>
@@ -59,7 +59,7 @@
         <div class="login">
             <h1>Login</h1>
             <br><br>
-            <form action="/login2" method="post">
+            <form action="/login" method="post">
                 {% csrf_token %}
             <table>
                 <tr>
