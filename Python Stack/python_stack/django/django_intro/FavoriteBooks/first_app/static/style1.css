@@ -1,0 +1,31 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+.nav2 {
+    display: flex;
+}
+.nav2 div {
+    margin-left: 20px;
+}
+hr {
+    height: 10px;
+    background-color: black;
+}
+.conainer {
+    margin: 0 2%;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+.flex2 {
+    margin-right: 40%;
+}
+.itlaic {
+    font-style: italic;
+}
+.favnyid {
+    padding: 10px;
+    border: 2px solid black;
+}
