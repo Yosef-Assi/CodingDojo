@@ -52,7 +52,7 @@
             <div class="flex2">
                 <h2>All books</h2>
                 {% for i in allbooks %}
-                    {% if i.uploaded_by.id == request.session.user_id %}
+                    {% if user in i.users_who_like.all %}
                         <a href="/favbooks/{{i.id}}">{{i.title}}</a>
                         <p> (added by {{i.uploaded_by.first_name}} {{i.uploaded_by.last_name}} )</p>
                         <span><p class="itlaic">this is one of your favorites</p></span>

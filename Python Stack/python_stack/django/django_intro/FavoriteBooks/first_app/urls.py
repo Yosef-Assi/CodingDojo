@@ -12,6 +12,8 @@ urlpatterns = [
     path('addfav/<int:id>',views.addfav),
     path('unfav/<int:id>',views.unfav),
     path('update/<int:id>',views.update),
+        path('addfav2/<int:id>',views.addfav2),
+
 
 
 
