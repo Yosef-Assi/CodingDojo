@@ -93,19 +93,23 @@
             </div>
             <div class="flex2">
                 <h2>Users who likes this book</h2>
-                {% for i in likebook %}
+                
                     <ul>
+                        {% for i in likebook %}
                         {% if i.id == request.session.user_id %}
                         <li>{{i.first_name}} <a href="/unfav/{{book.id}}">Un-Fav</a></li>
                         {% else %}
                         <li>{{i.first_name}}</li>
                         {% endif %}
-                        
+                        {% endfor %}
                     </ul>
+                    {% if user not in likebook%}
+                            <a href="/addfav/{{book.id}}">Add to Favorites</a>
+                    {% endif %}
                     
                     
-                {% endfor %}
-                <a href="/addfav/{{book.id}}">Add to Favorites</a>
+                
+                
 
                     
 

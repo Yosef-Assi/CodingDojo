@@ -21,6 +21,7 @@ def favbooks(request,id):
     context = {
         'book':book,
         'likebook':book.users_who_like.all(),
+        'user':user
     }
     return render(request,'favbooks.html',context)
 def reg(request):
@@ -59,6 +60,7 @@ def login(request):
         if bcrypt.checkpw(request.POST['password2'].encode(),logged_user.password.encode()):
             request.session['user_id'] = logged_user.id
             request.session['user_name']= logged_user.first_name
+            request.session['user']=logged_user
             return redirect('/books')
         else:
             messages.error(request,"Your email or password is wrong try ag!")
