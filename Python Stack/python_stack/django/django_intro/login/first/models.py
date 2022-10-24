@@ -18,7 +18,9 @@ class LoginManager(models.Manager):
             errors["password"] = "The Password should be at least 8 characters"
         if postData['birthDay'] > str(datetime.date.today()):
             errors["birthDay"] = "The birthday should be at past"
-       
+        if postData['birthDay'] > str(datetime.date(2009, 1, 1)):
+            errors["birthDay2"] = "The +13"
+      
 
         return errors
         

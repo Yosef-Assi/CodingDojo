@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style1.css' %}">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    <div class="containerB">
+        <div class="navbar">
+            <div class="nav1">
+                <h2>Arbortary</h2>
+            </div>
+            <div class="nav2">
+                <a href="/mytree">MyTress</a>
+            </div>
+            <div class="nav3">
+                <h2> Welcome {{request.session.user_name}}</h2>
+            </div>
+        </div>
+        <div class="navbar2">
+            <div class="nav1">
+                <p>A site to track randomly planted trees</p>
+            </div>
+            <div class="nav2">
+                <button><a class="a1" href="/newplant">Plant Tree</a></button>
+                <button><a class="a1" href="/logout">LogOut</a></button>
+                
+            </div>
+        </div>
+        <div class="tree">
+        <table border=1 class="table table-striped">
+            <tr>
+                <th>Species</th>
+                <th>Planted By</th>
+               
+                <th>Actions</th>
+                <th>Visitors</th>
+                
+            </tr>
+        {% for i in allplanet %}
+            <tr>
+                <td>{{i.species}}</td>
+                <td>{{i.planted_by.first_name}} {{i.planted_by.last_name}}</td>
+                <td><a href="/details/{{i.id}}">detalis</a></td>
+                <td>{{i.users_who_visit.all.count}}</td>
+            </tr>
+
+        {% endfor %}
+        </table>
+    </div>
+    </div>
+</body>
+</html>

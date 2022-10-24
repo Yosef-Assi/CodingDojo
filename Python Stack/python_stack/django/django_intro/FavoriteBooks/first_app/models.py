@@ -1,6 +1,4 @@
 from django.db import models
-
-from django.db import models
 import re
 
 class UserManager(models.Manager):

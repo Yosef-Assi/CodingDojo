@@ -4,6 +4,8 @@ from django.shortcuts import render,redirect
 import bcrypt
 from .models import *
 from django.contrib import messages
+from datetime import datetime, timedelta
+
 
 def root(request):
     return render(request,'login.html')
@@ -97,8 +99,18 @@ def command(request):
 
 def delmessage(request):
     
+    print(str(datetime.now()+ timedelta(minutes=1)))
     mymessage=Message.objects.get(id=request.POST['hide2'])
-    z=mymessage.created_at.strftime("%H %M %S")
-    print(z)
-    mymessage.delete()
-    return redirect('/wall')
+    z=mymessage.created_at
+    print(z.timestamp())
+    # formatted_date1 = time.strptime(z, "%d/%m/%Y")
+    if str(datetime.now()+ timedelta(minutes=1)) < str(z):
+        print(str(z))
+        print((datetime.now()+ timedelta(minutes=1)).timestamp())
+        mymessage.delete()
+        return redirect('/wall')
+    else:
+        messages.error(request," cant delete -30 min")
+
+        return redirect('/wall')
+

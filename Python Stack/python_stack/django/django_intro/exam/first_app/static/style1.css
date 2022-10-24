@@ -1,0 +1,51 @@
+.navbar {
+    display: flex ;
+    justify-content: space-between;
+}
+.navbar2 
+{
+    display: flex ;
+    justify-content: space-between;
+}
+
+.detail {
+    margin: 5% 10%;
+}
+.tree {
+    margin: 5% 10%;
+}
+.table {
+padding: 5%;
+}
+.nav2{
+    margin-left: 60%;
+}
+.containerB{
+    margin: 0 2%;
+}
+.a1 {
+    text-decoration: none;
+    color: black;
+}
+button {
+    box-shadow: 2px 2px black;
+}
+.form {
+    margin: 0 5%;
+}
+.btn1 {
+    box-shadow: 2px 2px black;
+    width: 100px;
+}
+.two {
+    display: flex;
+}
+.vist{
+    margin-top: 5% ;
+   
+}
+.bord{
+    border: 2px solid black;
+    width:400px ;
+    height: 200px;
+}

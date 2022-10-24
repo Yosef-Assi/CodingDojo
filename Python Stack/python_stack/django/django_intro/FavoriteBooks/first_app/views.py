@@ -66,6 +66,8 @@ def login(request):
         else:
             messages.error(request,"Your email or password is wrong try ag!")
             return redirect('/')
+    else:
+        messages.error(request,"Your email or password is wrong try ag!")
     return redirect('/')
 
 def addbook(request):

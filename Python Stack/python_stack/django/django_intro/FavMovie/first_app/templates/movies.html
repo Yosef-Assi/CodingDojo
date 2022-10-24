@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style1.css' %}">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="title">
+                <h3>Welcome back {{request.session.user_name}}</h3>
+            </div>
+            <div class="action">
+                    <p><a href="/movies">Home</a>|<a href="/gomovie">New Movie</a>|<a href="/logout">Logout</a></p>
+                    {% if user.user_type == "admin" %}
+                    <a href="/admin">edit user</a>
+                    {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="boxes">
+            <div class="box1">
+                <h1>Fav Books</h1>
+                <table border=1 class="table table-dark">
+                    <tr>
+                                <th>Movie</th>
+                                <th>Year</th>
+                                <th>Date Add</th>
+                                <th>Added By</th>
+                                <th>Remove ?</th>
+                    </tr>
+                            {% for i in allmovie %}
+                            {% if user in i.users_who_like.all %}
+                            <tr>
+                               
+                               
+                                <td><a href="">{{i.title}}</a></td>
+                                <td>{{i.year}}</td>
+                                <td>{{i.created_at}}</td>
+                                <td>{{i.uploaded_by.first_name}}</td>
+                                {% if i.uploaded_by.id == request.session.user_id %}
+                                <td><a href="/delmov/{{i.id}}">Delete</a></td>
+                                {% else %}
+                                <td><a href="/delfav/{{i.id}}">Non-Fav</a></td>
+                                {% endif %}
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </table>
+                
+            </div>
+            <div class="box2">
+                <h1>Non-Fav Books</h1>
+                <table border=1 class="table table-dark">
+                    <tr>
+                        <th>Movie</th>
+                        <th>Year</th>
+                        <th>Date Add</th>
+                        <th>Added By</th>
+                        <th>Fav</th>
+                    </tr>
+                    {% for i  in allmovie %}
+                    {% if user not in i.users_who_like.all %}
+                    <tr>
+                       
+                        <td><a href="">{{i.title}}</a></td>
+                        <td>{{i.year}}</td>
+                        <td>{{i.created_at}}</td>
+                        <td>{{i.uploaded_by.first_name}}</td>
+                        <td><a href="/addfav/{{i.id}}">Fav</a></td>
+                        
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

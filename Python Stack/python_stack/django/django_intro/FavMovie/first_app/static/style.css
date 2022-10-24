@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+
+}
+h1 {
+    color: red;
+}
+input {
+    border: 2px solid black;
+    border-radius: 7px;
+}
+body {
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+}
+form{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+p{
+    color: black;
+    
+}
+.vertical {
+    
+        border-left: 6px solid rgb(16, 133, 127);
+        height: 100%;
+        position:absolute;
+        left: 50%;
+    
+}
+
