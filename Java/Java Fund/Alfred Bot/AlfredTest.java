@@ -21,7 +21,13 @@ public class AlfredTest {
         String notRelevantTest = alfredBot.respondBeforeAlexis(
             "Maybe that's what Batman is about. Not winning. But failing.."
         );
-        
+        // sensi bouns 
+        String respondMoodAlfredAngry =  alfredBot.respondStausAlfred("alfred is  Angry");
+        String respondMoodAlfredSad =  alfredBot.respondStausAlfred("alfred is  Sad");
+        String respondMoodAlfredSomething =  alfredBot.respondStausAlfred("alfred something");
+
+
+
         // Print the greetings to test.
         System.out.println(testGreeting);
         
@@ -32,5 +38,9 @@ public class AlfredTest {
         System.out.println(alfredTest);
         System.out.println(notRelevantTest);
         System.out.println(testGreetingPeriod);
+        System.out.println(respondMoodAlfredAngry);
+        System.out.println(respondMoodAlfredSad);
+        System.out.println(respondMoodAlfredSomething);
+
     }
 }

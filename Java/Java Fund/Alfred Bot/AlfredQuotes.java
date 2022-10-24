@@ -42,5 +42,21 @@ public class AlfredQuotes {
 	
 	// See the specs to overload the guessGreeting method
     // SENSEI BONUS
+    public String respondStausAlfred(String conversation) {
+        // YOUR CODE HERE
+        if (conversation.contains("Angry")){
+            return "Im angry Alexis";
+
+
+        }
+        else if (conversation.contains("Sad")){
+            return "Im Sad Alexis";
+
+
+        }
+        else {
+            return "Alfred ..........";
+        }
+    }
     // Write your own AlfredQuote method using any of the String methods you have learned!
 }
