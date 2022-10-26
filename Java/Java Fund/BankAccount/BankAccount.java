@@ -1,14 +1,19 @@
+import java.util.Random;
 public class BankAccount {
     private double checkingBalance;
     private double savingsgBalance;
     private static  int numbeOfAccounts = 0;
     private static  double totalMoney = 0.0;
+    private String accountNumber = "";
 
     public BankAccount(double checkingBalance,double savingsgBalance){
         this.savingsgBalance=savingsgBalance;
         this.checkingBalance=checkingBalance;
         numbeOfAccounts++;
+        accountNumber=accountNumber();
         System.out.println("This Account number is "+numbeOfAccounts);
+        System.out.println("Your Account number is "+accountNumber);
+
     }
 
      public double getCheckingBalance(){
@@ -57,6 +62,17 @@ public class BankAccount {
     public void checkBalance() {
         System.out.println("*********** Your Total Balnce is ***********");
 		System.out.println("The Total Money is : "+ totalMoney);
+	}
+    private String accountNumber() {
+		String numbers = "0123456789";
+		String randomNumber = "";
+		Random rand = new Random();
+		for(int i = 0; i < 10; i++) {
+			char number = numbers.charAt(rand.nextInt(10));
+			randomNumber += number;
+		}
+		accountNumber = randomNumber;
+		return randomNumber;	
 	}
 
 }
