@@ -1,0 +1,25 @@
+@charset "windows-1256";
+
+
+body {
+	margin:5% 20%;
+}
+
+h1 {
+	color:pink;
+	
+}
+
+table {
+	border:10px solid pink;
+	margin-top:50px;
+	width:80%;
+}
+td {
+	border-top:2px solid pink;
+}
+
+
+tr {
+	margin-right:20px;
+}

@@ -1,13 +1,13 @@
-package com.codingdojo.displaydate;
+package com.codingdojo.fruityloops;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DisplayDateApplication {
+public class FruityLoopsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DisplayDateApplication.class, args);
+		SpringApplication.run(FruityLoopsApplication.class, args);
 	}
 
 }
