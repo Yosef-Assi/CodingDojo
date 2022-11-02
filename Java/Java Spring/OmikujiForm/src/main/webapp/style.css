@@ -1,0 +1,22 @@
+@charset "windows-1256";
+
+
+
+
+body {
+	margin:5% 25%;
+}
+form {
+	border:5px solid black;
+	width:50%;
+	padding: 2%;
+	
+}
+
+.box {
+	border:2px solid black;
+	padding:3%;
+	width:40%;
+	background-color:#9fc5f8;
+}
+

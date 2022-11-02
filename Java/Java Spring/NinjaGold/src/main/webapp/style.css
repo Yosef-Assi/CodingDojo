@@ -1,0 +1,21 @@
+@charset "windows-1256";
+
+
+body {
+	margin:5% 15%;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.box {
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    padding: 1.5%;
+}
+h2{
+    color: red;
+}
