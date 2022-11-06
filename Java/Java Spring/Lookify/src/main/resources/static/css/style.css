@@ -1,14 +1,21 @@
 @charset "windows-1256";
 
 body {
-	margin:5% 20%;
+	margin:5% 10%;
 }
 
 h2{
 	color:red;
 	
 }
-
+.search {
+	display:flex;
+	justify-content: flex-start;
+}
+a{
+	text-align: center;
+	margin-left:20%;
+}
 
 .tb1 {
 	border:4px solid rgb(0, 0, 0);

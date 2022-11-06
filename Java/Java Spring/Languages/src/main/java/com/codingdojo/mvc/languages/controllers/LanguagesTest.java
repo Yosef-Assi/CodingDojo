@@ -31,7 +31,6 @@ public class LanguagesTest {
 	}
 	@GetMapping("/languages")
 	public String languages(@ModelAttribute ("language") language lang,Model model) {
-		
 			List<language> allLanguages = langService.findAll();
 			model.addAttribute("lang", allLanguages);
 			return "lang.jsp";
