@@ -59,6 +59,8 @@ public class DojoControllers {
     @GetMapping("/dojos/{id}")
     public String show2(@PathVariable("id") Long id,Model model){
     	model.addAttribute("show",dojoServcie.findLookify(id));
+
     	return "show.jsp";
     }
+
 }
