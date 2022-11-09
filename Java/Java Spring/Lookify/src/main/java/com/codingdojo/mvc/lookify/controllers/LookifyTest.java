@@ -52,11 +52,11 @@ public class LookifyTest {
 	            return "redirect:/lookifies";
 	        }
 	    }
-	@PostMapping("/search")
-	public String dashboard(@RequestParam("search") String artist, Model model) {
-		model.addAttribute("artist", artist);
-		return "redirect:/search/"+artist;
-	}
+//	@PostMapping("/search")
+//	public String dashboard(@RequestParam("search") String artist) {
+////		model.addAttribute("artist", artist);
+//		return "redirect:/search/"+artist;
+//	}
 	@GetMapping("/search/{artist}")
 	public String search(@PathVariable("artist") String artist, Model model) {
 		List<Lookify> songs = lookifyService.findByArtist(artist);

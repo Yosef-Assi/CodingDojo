@@ -10,34 +10,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Tacos</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
+<meta charset="windows-1256">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-   <br>
-   		<h2 style="text-align: center;">${show.name }</h2>
-   	<br>
-   	<a href="/">Home</a>
-   	
-   	<h2>Products :</h2>
-   
-    	  <c:forEach var="lang1" items="${procat}">
-    	
-        <p><c:out value="${lang1.name}"></c:out></p>
-        
-    </c:forEach> 
-	<form action="/cat/${show.id}" method="post">
+
+<h2>What is your question?</h2>
+
+<form action="/add" method="post">
 		<table>
 			<tr>
-			<select name="productid" id="categoryId" class="form-control">
-						<c:forEach var="pro" items="${allprodu }">
-								<option value="${pro.id }">${pro.name }</option>
-						</c:forEach>
-			</select>
+				<td><label id="question">Question</label></td>
+			
+				<td><input type="text" class="form-control" name="question"></td>
+			</tr>
+			<tr>
+				<td><label id="question">Tag</label></td>
+				<td><input type="text" class="form-control" name="tag"></td>
 			</tr>
 			<tr>
 				<td>
@@ -48,5 +41,6 @@
 		</table>
 
 </form>
+
 </body>
 </html>
