@@ -47,7 +47,7 @@
 				<tr>
 				<td>
 					<form:label  path="description">Enter Desc</form:label>
-					<form:input  class="form-control" path="description"/>
+					<form:textarea path="description"></form:textarea>
 					<form:errors path="description" class="red"/>
 				</td>
 			</tr>

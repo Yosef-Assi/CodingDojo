@@ -1,0 +1,42 @@
+@charset "windows-1256";
+
+body {
+	margin:5% 20%;
+}
+
+h2{
+	color:red;
+	
+}
+
+
+
+table {
+	margin-top:10px;
+	width:80%;
+	border:2px solid black;
+
+}
+.tb1 td {
+	border-top:2px solid black;
+	text-align: center;
+	
+}
+.tb1 th {
+	text-align: center;
+	
+}
+
+
+.tb1 tr {
+	margin-right:20px;
+	margin-top: 5px;
+}
+
+.red  {
+	color:red;
+}
+
+li {
+	list-style: none;
+}
