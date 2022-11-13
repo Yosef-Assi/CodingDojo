@@ -1,5 +1,8 @@
 select A.name,B.language,B.percentage from countries AS A join languages AS B on A.id=B.country_id 
 where B.language="Slovene" ORDER BY B.percentage DESC ;
+
+
+
 /***************************************/
 select A.name,count(A.Code) AS NumberOfCities from country AS A join cities AS B on A.code = B.country_code group by A.code order by NumberOfCities desc;
 
