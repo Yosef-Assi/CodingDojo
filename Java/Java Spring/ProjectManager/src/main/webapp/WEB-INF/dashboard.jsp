@@ -40,6 +40,7 @@
             <th>team lead</th>
             <th>Due Date</th>
             <th>Actions</th>
+            <th>Numbers users for this team</th>
         </tr>
     </thead>
    <tbody>
@@ -53,6 +54,7 @@
         
         
         <td><a href="/jointeam/${project.id }">Join Team</a></td>
+        <td>${project.getUsers().size() }</td>
         
     </c:forEach>
     </c:when>    
@@ -96,7 +98,8 @@
         <br />
     </c:otherwise>
 </c:choose>
-        
+      </td>
+      <td>${project.getUsers().size() }</td>  
     </c:forEach>
     </tbody>
 	</table>

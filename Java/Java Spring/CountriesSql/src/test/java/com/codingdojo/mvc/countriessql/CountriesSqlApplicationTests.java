@@ -1,22 +1,13 @@
-package com.codingdojo.mvc.projectmanager;
-
-
+package com.codingdojo.mvc.countriessql;
 
 import org.junit.jupiter.api.Test;
-
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-
-
 @SpringBootTest
-class ProjectManagerApplicationTests {
-
+class CountriesSqlApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
-	
-	
 
 }

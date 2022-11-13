@@ -71,4 +71,13 @@ public class Services {
 		return productRepo.findAllByCategories(cat);
 	}
 	
+
+	public List<Product> ProductNitcontains(Categorie cat){
+		return productRepo.findByCategoriesNotContains(cat);
+	}
+	
+	public List<Categorie> allproductbycat(Product product){
+		return categoryRepo.findByProductsNotContains(product);
+	}
+	
 }

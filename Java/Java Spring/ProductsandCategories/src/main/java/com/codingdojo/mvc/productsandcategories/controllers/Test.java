@@ -64,8 +64,9 @@ private final Services dojoservice;
 	 @GetMapping("/product/{productId}")
 	    public String show2(@PathVariable("productId") Long id,Model model){
 	    	model.addAttribute("show",dojoservice.findLookify(id));
-	    	model.addAttribute("allcat",dojoservice.findNinja());
-	        Product product = dojoservice.findLookify(id);
+	    	 Product product = dojoservice.findLookify(id);
+	    	model.addAttribute("allcat",dojoservice.allproductbycat(product));
+	        
 	    	model.addAttribute("procat",dojoservice.proCat(product));
 	    	
 
@@ -89,8 +90,9 @@ private final Services dojoservice;
 	 @GetMapping("/cat/{catid}")
 	    public String showcat(@PathVariable("catid") Long id,Model model){
 	    	model.addAttribute("show",dojoservice.findCat(id));
-	    	model.addAttribute("allprodu",dojoservice.findAll());
 	        Categorie category = dojoservice.findCat(id);
+
+	    	model.addAttribute("allprodu",dojoservice.ProductNitcontains(category));
 	    	model.addAttribute("procat",dojoservice.catPro(category));
 	    	return "showcat.jsp";
 	    }

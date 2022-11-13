@@ -16,4 +16,8 @@ public interface ProductRepo extends CrudRepository<Product, Long> {
 	List<Product> findAllByCategories(Categorie cat);
 	@Query(value="select categories_products.id,categories.name from products  join categories_products on products.id= categories_products.product_id join categories on categories_products.category_id=categories.id where products.id=?1",nativeQuery = true)
 	List<CategoryProduct> proCat(Long id);
+	
+	List<Product> findByCategoriesNotContains(Categorie cat);
+
+
 }
