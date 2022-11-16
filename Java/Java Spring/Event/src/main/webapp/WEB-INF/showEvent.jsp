@@ -118,5 +118,26 @@
     
     </tbody>
 	</table>
+	
+			<form:form action="/new/rate/${events.id }" method="post" modelAttribute="rate">
+			<input type="hidden" name="_method" value="put">
+			<form:input type="hidden" path="user" value="${user.id }" />
+			<form:input type="hidden" path="event" value="${events.id }"/>
+	
+			<table  class="table">
+			<tr>
+				<td>
+					<form:label path="rate">Add Rate</form:label>
+					<form:input path="rate" type="number" class="form-control"/>
+					<form:errors path="rate" class="red"/>
+				</td>
+				<tr>
+				<td>
+					<input type="submit" class="form-control" value="Send">
+				</td>
+			</tr>
+		</table>
+
+</form:form>
 </body>
 </html>

@@ -40,5 +40,18 @@ public class EventServ {
 		        	 eventrepo.deleteById(id);
 		         }
 		  }
-		
+		    public List<Event> findByloc(String name){
+				return eventrepo.findBylocation(name);
+			}
+		    
+		    
+		    
+		    
+		    
+		    public List<Event> topRte(){
+				return eventrepo.TopRate();
+			}
+		    
+		    
+		    
 }

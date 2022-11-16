@@ -42,6 +42,7 @@
             <th>Location</th>
             <th>State</th>
             <th>Host</th>
+            <th>Avg Rate</th>
             <th>Actions / Status</th>
         </tr>
     </thead>
@@ -57,7 +58,9 @@
         <td><c:out value="${event.location}"></c:out></td>
         <td><c:out value="${event.state}"></c:out></td>
         
+       
         <td><c:out value="${event.user.userName}"></c:out></td>
+         <td><c:out value="${event.getAvgRate()}"></c:out></td>
         
         <td>
          <c:choose>
@@ -96,9 +99,11 @@
     <thead>
         <tr>
             <th>Name</th>
+            
             <th>Date</th>
             <th>Location</th>
             <th>State</th>
+            <th>Avg Rate</th>
             <th>Host</th>
             <th>Actions</th>
         </tr>
@@ -114,6 +119,8 @@
         <td><c:out value="${event.dueDate}"></c:out></td>
         <td><c:out value="${event.location}"></c:out></td>
        	<td><c:out value="${event.state}"></c:out></td>
+        
+                 <td><c:out value="${event.getAvgRate()}"></c:out></td>
         
         <td><c:out value="${event.user.userName}"></c:out></td>
   
@@ -144,6 +151,27 @@
     
     </tbody>
 	</table>
+	<form action="/search" method="post">
+<%-- 			<form:input type="hidden" path="user" value="${user.id }"/> --%>
+	
+		<table>
+			<tr>
+				<td>
+					<label id="name"> Search by Location</label>
+					<input type="text" name="name" class="form-contro"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" class="form-control" value="Send">
+				</td>
+			</tr>
+		
+		</table>
+
+		
+		
+</form>
 	
 </body>
 </html>

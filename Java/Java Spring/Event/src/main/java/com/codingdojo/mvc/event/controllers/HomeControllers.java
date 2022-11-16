@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.mvc.event.models.Event;
 import com.codingdojo.mvc.event.models.LoginUser;
 import com.codingdojo.mvc.event.models.Message;
 import com.codingdojo.mvc.event.models.User;
+import com.codingdojo.mvc.event.models.event_rate;
 import com.codingdojo.mvc.event.services.EventServ;
 import com.codingdojo.mvc.event.services.MessageServ;
+import com.codingdojo.mvc.event.services.RateServ;
 import com.codingdojo.mvc.event.services.UserServ;
 
 @Controller
@@ -31,6 +34,8 @@ public class HomeControllers {
 	 EventServ eventServ;
 	 @Autowired
 	 MessageServ messageServ;
+	 @Autowired
+	 RateServ rateServ;
     
     @GetMapping("/")
     public String index(Model model) {
@@ -87,6 +92,8 @@ public class HomeControllers {
     public String home(Model model,HttpSession session) {
         model.addAttribute("user1",userServ.findUser((Long) session.getAttribute("user_id")));
         model.addAttribute("events",eventServ.findAll());
+      
+        model.addAttribute("top",eventServ.topRte());
 
     	return "dashboard.jsp";
     }
@@ -121,7 +128,7 @@ public class HomeControllers {
     		User user = userServ.findUser((Long)session.getAttribute("user_id"));
     	
     		user.getEvents().add(event);
-//    		System.out.println(user.getEvents().contains(event));
+//   		System.out.println(user.getEvents().contains(event));
     		eventServ.createProject(event);
 
             return "redirect:/dashboard";
@@ -167,12 +174,20 @@ public class HomeControllers {
  		 
  	 }
      @GetMapping("/show/event/{id}")
-   	 public String showOneEvent(@PathVariable("id")Long id,Model model,HttpSession session,@ModelAttribute("message") Message message) {
+   	 public String showOneEvent(@PathVariable("id")Long id,Model model,HttpSession session,@ModelAttribute("message") Message message,@ModelAttribute("rate") event_rate rate) {
    		 Event event = eventServ.findEvent(id);
    		 model.addAttribute("events", event);
    		 model.addAttribute("event2", event);
    		 model.addAttribute("user", userServ.findUser((Long)session.getAttribute("user_id")));
    		 model.addAttribute("messages", messageServ.findAll());
+   		 System.out.println(rateServ.avgRate(id));
+    	 Double avgr=rateServ.avgRate(id);
+    	 eventServ.findEvent(id).setAvgRate(avgr);
+    	
+
+    	 eventServ.createProject(event);
+    	 System.out.println(eventServ.findEvent(id).getAvgRate());
+    	 eventServ.createProject(event);
    		 return "showEvent.jsp";
    	 }
      @PostMapping("/new/message")
@@ -184,5 +199,34 @@ public class HomeControllers {
              return "redirect:/dashboard";
          }
      }
+     
+     @PutMapping("/new/rate/{id}")
+     public String addRate(@Valid @ModelAttribute("rate") event_rate rate ,BindingResult result ,Model model,HttpSession session,@PathVariable("id") Long id) {
+         if (result.hasErrors()) {
+             return "showEvent.jsp";
+         } else {
+        	 Event event = eventServ.findEvent(id);
+        	 rateServ.createRate(rate);
+        	 System.out.println(rateServ.avgRate(id));
+        	 Double avgr=rateServ.avgRate(id);
+        	 eventServ.findEvent(id).setAvgRate(avgr);
+        	
+
+        	 eventServ.createProject(event);
+             return "redirect:/dashboard";
+         }
+     }
+     
+     
+     @PostMapping("/search")
+     public String search(@RequestParam("name") String location, Model model,HttpSession session) {
+             return "redirect:/search/"+location; 
+     }
+     
+     @GetMapping("/search/{loc}")
+   	 public String searchevent(@PathVariable("loc")String loc,Model model,HttpSession session) {
+    	 model.addAttribute("event2", eventServ.findByloc(loc));
+   		 return "showEvent2.jsp";
+   	 }
     
 }

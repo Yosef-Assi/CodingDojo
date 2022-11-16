@@ -1,4 +1,4 @@
-package com.codingdojo.mvc.event.models;
+package com.codingdojo.mvc.tvshow.models;
 
 
 import java.util.Date;
@@ -20,13 +20,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-
-
 
 
 
@@ -57,21 +53,13 @@ public class User {
     @NotEmpty(message="Confirm Password is required!")
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
-   
-    @NotNull
-    private String state ;
-    
-    @NotNull
-    private String location;
+  
     
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
-    
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    private List<Event> evnet;
     
     public User() {}
 
@@ -140,82 +128,26 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	 
+	@Column(updatable=false)
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private List<Show> show;
 
-	public String getLocation() {
-		return location;
+	public List<Show> getShow() {
+		return show;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setShow(List<Show> show) {
+		this.show = show;
 	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-
-	 	
-	 public List<Event> getEvnet() {
-		return evnet;
-	}
-
-	public void setEvnet(List<Event> evnet) {
-		this.evnet = evnet;
-	}
-
-
-
 	@ManyToMany(fetch = FetchType.LAZY)
-     @JoinTable(
-         name = "event_users", 
-         joinColumns = @JoinColumn(name = "user_id"), 
-         inverseJoinColumns = @JoinColumn(name = "event_id")
-     )     
-    private List<Event> events;
-	
-  
-	 	@Column(updatable=false)
-	    @OneToMany(mappedBy="users", fetch = FetchType.LAZY)
-	    private List<Message> message;
-
-		public List<Event> getEvents() {
-			return events;
-		}
-
-		public void setEvents(List<Event> events) {
-			this.events = events;
-		}
-
-		public List<Message> getMessage() {
-			return message;
-		}
-
-		public void setMessage(List<Message> message) {
-			this.message = message;
-		}
-	 	
-	
-		@ManyToMany(fetch = FetchType.LAZY)
-	     @JoinTable(
-	         name = "events_rate", 
-	         joinColumns = @JoinColumn(name = "user_id"), 
-	         inverseJoinColumns = @JoinColumn(name = "event_id")
-	     )     
-	    private List<Event> eventRate;
-
-		public List<Event> getEventRate() {
-			return eventRate;
-		}
-
-		public void setEventRate(List<Event> eventRate) {
-			this.eventRate = eventRate;
-		}
-		
-		
+    @JoinTable(
+        name = "events_rate", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "event_id")
+    ) 
+    // TODO - Don't forget to generate getters and setters
+	private List<Show> shows;
   
 }
     

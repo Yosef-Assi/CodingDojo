@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -45,6 +46,9 @@ public class Event {
 	    @NotNull
 	    private String location;
 	    
+	    
+	
+	    private Double avgRate;
 	    
 		@ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name="event_host")
@@ -148,4 +152,33 @@ public class Event {
 			this.me = me;
 		}
 		
+		 @ManyToMany(fetch = FetchType.LAZY)
+	     @JoinTable(
+	         name = "events_rate", 
+	         joinColumns = @JoinColumn(name = "event_id"), 
+	         inverseJoinColumns = @JoinColumn(name = "user_id")
+	     ) 
+		 private List<User> userRate;
+
+
+		public List<User> getUserRate() {
+			return userRate;
+		}
+
+
+		public void setUserRate(List<User> userRate) {
+			this.userRate = userRate;
+		}
+
+
+		public Double getAvgRate() {
+			return avgRate;
+		}
+
+
+		public void setAvgRate(Double avgRate) {
+			this.avgRate = avgRate;
+		}
+		 
+		 
 }
