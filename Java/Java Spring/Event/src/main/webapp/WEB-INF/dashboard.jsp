@@ -105,6 +105,7 @@
             <th>State</th>
             <th>Avg Rate</th>
             <th>Host</th>
+            <th>How Many Joined</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -120,10 +121,20 @@
         <td><c:out value="${event.location}"></c:out></td>
        	<td><c:out value="${event.state}"></c:out></td>
         
-                 <td><c:out value="${event.getAvgRate()}"></c:out></td>
+       	<td><c:out value="${event.getAvgRate()}"></c:out></td>
         
         <td><c:out value="${event.user.userName}"></c:out></td>
-  
+        
+         <c:choose>
+        <c:when test="${event.getUsers().size() < event.capcity}">
+        
+        <td><c:out value="${event.getUsers().size()}"></c:out> / ${event.capcity }</td>
+           </c:when>
+         <c:otherwise>
+          <td>this event is full!</td>
+  		</c:otherwise>
+  		  
+         </c:choose>
          <td>
          <c:choose>
          <c:when test="${event.user.id==user_id}">
@@ -136,11 +147,15 @@
           <c:when test="${user1.getEvents().contains(event)}">
 	            	Joining ||	<a href="/leaveevent/${event.id}">Cancel</a>
 	         	</c:when> 
-		    <c:otherwise>
+		    <c:when test="${event.getUsers().size() < event.capcity}">
 		    
         				<a href="/join/event/${event.id}">Join</a>
         <br />
-   		 </c:otherwise>  
+   		 </c:when> 
+   		 <c:otherwise>
+          <td>You Cant Joined </td>
+  		</c:otherwise>
+  		   
          </c:choose>
          </td>
 

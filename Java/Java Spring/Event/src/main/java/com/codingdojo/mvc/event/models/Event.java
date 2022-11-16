@@ -50,6 +50,9 @@ public class Event {
 	
 	    private Double avgRate;
 	    
+	    
+	    private Integer capcity;
+	    
 		@ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name="event_host")
 		private User user;
@@ -178,6 +181,16 @@ public class Event {
 
 		public void setAvgRate(Double avgRate) {
 			this.avgRate = avgRate;
+		}
+
+
+		public Integer getCapcity() {
+			return capcity;
+		}
+
+
+		public void setCapcity(Integer capcity) {
+			this.capcity = capcity;
 		}
 		 
 		 

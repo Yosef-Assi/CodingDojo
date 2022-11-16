@@ -64,6 +64,14 @@
 			</tr>
 			<tr>
 				<td>
+					<form:label  path="capcity">capcity</form:label>
+					<form:input  class="form-control" path="capcity"/>
+					<form:errors path="capcity" class="red"/>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<input type="submit" class="form-control" value="Send">
 				</td>
 			</tr>
